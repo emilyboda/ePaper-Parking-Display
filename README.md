@@ -1,16 +1,16 @@
 # ePaper Parking Display
-A display that shows your car's parked location
+A display that shows your car's parked location. Automatically updated by a Tasker script.
 
 <img src="https://raw.githubusercontent.com/emilyboda/epaper-parking-display/master/parking_display_for_upload.jpg" width="500">
-
-## How does it work?
-Your location is stored in a Google Sheet. I did this with Tasker, but you may want to do this manually.
-![flow chart](flow_chart.png)
 
 ## Video of Display in Action
 Here is a gif of how the display looks when it is refreshed. I've shortened the video substantially, the actual refresh takes a minutes and forty-four seconds.
 
 ![Parking Display Refresh Gif](parking_display_refresh_redacted.gif)
+
+## How does it work?
+Your location is stored in a Google Sheet. I did this with Tasker, but you may want to do this manually.
+![flow chart](flow_chart.png)
 
 ## How can I set this up?
 This is not a plug-and-play project. There are a lot of critical dependencies that you must get right in order for this to work and obviously my code will not work without a lot of edits. [I explain my entire project over on my website.](https://www.emilyboda.com/post/parking-display) Please read my explaination before trying to go through the installation steps yourself.
