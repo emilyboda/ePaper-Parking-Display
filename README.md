@@ -1,13 +1,22 @@
 # ePaper Parking Display
 A display that shows your car's parked location
 
+![Image of Parking Display](parking display_for_upload.jpg)
+
+## How does it work?
+![flow chart](flow chart.png)
+
+## Video of Display in Action
+Here is a gif of how the display looks when it is refreshed. I've shortened the video substantially, the actual refresh takes a minutes and forty-four seconds.
+![Parking Display Refresh Gif](parking_display_refresh_redacted.gif)
+
 ## Full Installation Instructions
 ### Setting up the Pi
 1. [Download the latest Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and flash to an SD card.
    - Use Raspbian Buster with Desktop
-2. Edit the wpa_supplicant.conf file and save it to the boot directory.
+2. Download the [wpa_supplicant.conf](wpa_supplicant.conf) file and save it to the boot directory.
    - Edit the "ssid" and the "psk" to be your wifi name and password
-   - Edit the "country" to the two-digit ISO code for your country
+   - Edit the "country" to the two-digit ISO code for your country if necessary
 3. Add a blank file named "ssh" (no file extension) to the boot directory to enable SSH.
 4. Eject your SD card from your computer and insert it into your Pi. Plug the Pi in to power.
 5. Use an app such as [Fing](https://www.fing.com/) to scan your wifi network and identify the IP address of your new Pi.
@@ -20,8 +29,8 @@ A display that shows your car's parked location
 10. Update and upgrade the Pi using `sudo apt update` and then `sudo apt full-upgrade`.
 
 ### Copy files and install required packages
-11. Create the parking directory on the Pi using `mkdir parking`.
-12. Copy the github files into the parking directory.
+11. Create the parking directory on the Pi using `mkdir parking`. Copy the files from the "parking" directory on this repo into the parking directory on your Pi. 
+12. Add a new directory inside the parking directory called "images". This is where the images will be saved whenever you refresh the display (for debugging).
 13. Install required packages using the following commands:
     - `pip3 install pyowm`
     - `pip3 install Pillow==6.2.2`
@@ -64,7 +73,7 @@ A display that shows your car's parked location
     - Use `crontab -e` to edit the file.
     - Add `*/10 * * * python3 /home/pi/parking/display_image.py` to the bottom of the file.
 
-### Create your tasker plugin to populate the location
+### Create your Tasker plugin to populate the location
 20. Create a task that runs the following:
     - Get Location v2
     - Use the Spreadsheet Update plug-in to write %gl_coordinates to cell B2 on the tab called "current"
