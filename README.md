@@ -4,12 +4,16 @@ A display that shows your car's parked location
 <img src="https://raw.githubusercontent.com/emilyboda/epaper-parking-display/master/parking_display_for_upload.jpg" width="500">
 
 ## How does it work?
+Your location is stored in a Google Sheet. I did this with Tasker, but you may want to do this manually.
 ![flow chart](flow_chart.png)
 
 ## Video of Display in Action
 Here is a gif of how the display looks when it is refreshed. I've shortened the video substantially, the actual refresh takes a minutes and forty-four seconds.
 
 ![Parking Display Refresh Gif](parking_display_refresh_redacted.gif)
+
+## How can I set this up?
+This is not a plug-and-play project. There are a lot of critical dependencies that you must get right in order for this to work and obviously my code will not work without a lot of edits. [I explain my entire project over on my website.](https://www.emilyboda.com/post/parking-display) Please read my explaination before trying to go through the installation steps yourself.
 
 ## Full Installation Instructions
 ### Setting up the Pi
@@ -76,8 +80,8 @@ Here is a gif of how the display looks when it is refreshed. I've shortened the 
 
 ### Create your Tasker plugin to populate the location
 20. Create a task that runs the following:
-    - Get Location v2
-    - Use the Spreadsheet Update plug-in to write %gl_coordinates to cell B2 on the tab called "current"
+    - Get Location v2.
+    - Use the Spreadsheet Update plug-in to write %gl_coordinates to cell B2 on the tab called "current".
     - I also update a second tab in the sheet to make a log with the date/time and the coordinates so I can go back and troubleshoot if necessary.
 21. Create a profile to trigger the task
     - Profile should be triggered when BT is connected. Set the BT to your car's BT.
