@@ -1,13 +1,14 @@
 # ePaper Parking Display
 A display that shows your car's parked location
 
-![Image of Parking Display](parking display_for_upload.jpg)
+<img src="https://raw.githubusercontent.com/emilyboda/epaper-parking-display/master/parking_display_for_upload.jpg" width="500">
 
 ## How does it work?
-![flow chart](flow chart.png)
+![flow chart](flow_chart.png)
 
 ## Video of Display in Action
 Here is a gif of how the display looks when it is refreshed. I've shortened the video substantially, the actual refresh takes a minutes and forty-four seconds.
+
 ![Parking Display Refresh Gif](parking_display_refresh_redacted.gif)
 
 ## Full Installation Instructions
