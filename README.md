@@ -51,7 +51,7 @@ A display that shows your car's parked location
     Resolution: 61 ppi
     ```
     - After you export the png file, double check the dimensions of the picture. Make sure they are exactly the dimensions of your epaper display. If they are even one pixel off, nothing will display on your screen and there will be no error message - a very frustrating thing to troubleshoot.
-17. jfsljsd the map image.
+17. Calibrate the map image.
     - In order to convert from lat and lon coordinates to pixels on your map, you will need to find the pixel coordinates and the location coordinates for two points and set them in the display_image.py file.
     - Set the first pixel coordinate and lat/lon coordinates as `pix1` and `coord1`. Set the second as `pix2` and `coord2`.
 18. Create the geojson file.
