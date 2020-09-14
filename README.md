@@ -15,6 +15,11 @@ Your location is stored in a Google Sheet. I did this with Tasker, but you may w
 ## How can I set this up?
 This is not a plug-and-play project. There are a lot of critical dependencies that you must get right in order for this to work and obviously my code will not work without a lot of edits. [I explain my entire project over on my website.](https://www.emilyboda.com/post/parking-display) Please read my explaination before trying to go through the installation steps yourself.
 
+## You will need:
+- [Raspberry Pi Zero](https://www.amazon.com/gp/product/B0748MPQT4/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=nova08-20&linkId=fdde8192b5aa90f4fe858929bb859e76&language=en_US)
+- [7.5" ePaper Screen](https://www.amazon.com/waveshare-7-5inch-HAT-Raspberry-Consumption/dp/B075R4QY3L/ref=as_li_ss_tl?dchild=1&keywords=waveshare+7.5&qid=1600103451&sr=8-1&linkCode=ll1&tag=nova08-20&linkId=999ec0a6b15e20a99789c3f37ad49e07&language=en_US)
+- A way of getting the location of your car (I used my Android smartphone)
+
 ## Full Installation Instructions
 ### Setting up the Pi
 1. [Download the latest Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and flash to an SD card.
