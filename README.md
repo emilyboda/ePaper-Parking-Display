@@ -130,4 +130,5 @@ An earlier version of this project attempted to snap to roads manually. This was
 
 ## Big Thanks to
 [@aceisace](https://github.com/aceisace) and [@worstface](https://github.com/worstface) for continued help with Waveshare displays.
+
 [@supermamon](https://github.com/supermamon) for answering my questions on Reddit and coming through with the Shortcut for Google Sheets. I never would have figured this part out on my own.
