@@ -92,7 +92,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
     *This will run the program to check for a new parking location every 10 minutes. The screen will only update if your car has actually moved to a new location on the screen.*
 
 ### Create your Tasker plugin to populate the location
-*Skip the the next section if you don't have an Android device.*
+*Skip to the next section if you don't have an Android device.*
 
 18. Create a task that runs the following:
     - Get Location v2.
@@ -104,7 +104,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
     - Move the task to "Exit" so it only runs when bluetooth is disconnected.
 
 ### Create a iOS Shortcuts task to populate the location
-*Skip this section if you don't have an iOS device*
+*Skip to the previous section if you don't have an iOS device*
 
 20. [Follow these instructions](https://gist.github.com/supermamon/5080a599f3719541cb48b3c3ab4e1502) from @supermamon to set up a shortcut to update your location.
     1. Edit the shortcut so that it will upload the date, time, timestamp, and current location.
