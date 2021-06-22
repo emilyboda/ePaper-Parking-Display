@@ -9,17 +9,20 @@ Here is a gif of how the display looks when it is refreshed. I've shortened the 
 ![Parking Display Refresh Gif](parking_display_refresh_redacted.gif)
 
 ## How does it work?
-Your location is stored in a Google Sheet. I did this with Tasker, but you may want to do this manually.
+Your location is stored in a Google Sheet. The idea is for this coordinate value to be automatically updated. 
+
+I used Tasker to automatically update the location with my phone when it disconnected from bluetooth. iOS devices can also automate this update process using the app Shortcuts, although they have to manually trigger the process until Apple allows tasks to be triggered by disconnecting from bluetooth.
+
 ![flow chart](flow_chart.png)
 
 ## How can I set this up?
-This is not a plug-and-play project. There are a lot of critical dependencies that you must get right in order for this to work and obviously my code will not work without a lot of edits. [I explain my entire project over on my website.](https://www.emilyboda.com/post/parking-display) Please read my explaination before trying to go through the installation steps yourself.
+This project is definitely a work in progress and not "plug-and-play". In this, the second version, I believe it's possible for you to follow the installation instructions below and create your own version. I haven't smoothed out all of the bugs yet, however. [Please read up on the first version of the project here](https://www.emilyboda.com/post/parking-display) and if you do end up replicating it, please contact me there and let me know the issues you ran into.
 
 ## Full Installation Instructions
 ### You will need:
 - [Raspberry Pi Zero](https://www.amazon.com/gp/product/B0748MPQT4/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=nova08-20&linkId=fdde8192b5aa90f4fe858929bb859e76&language=en_US)
 - [7.5" ePaper Screen](https://www.amazon.com/waveshare-7-5inch-HAT-Raspberry-Consumption/dp/B075R4QY3L/ref=as_li_ss_tl?dchild=1&keywords=waveshare+7.5&qid=1600103451&sr=8-1&linkCode=ll1&tag=nova08-20&linkId=999ec0a6b15e20a99789c3f37ad49e07&language=en_US)
-- A way of getting the location of your car (I used my Android smartphone)
+- A way of getting the location of your car (I used my Android smartphone, but you can use an iPhone and an NFC tag)
 
 ### Setting up the Pi
 1. [Download the latest Raspberry Pi Imager](https://www.raspberrypi.org/downloads/) and flash to an SD card.
@@ -39,7 +42,7 @@ This is not a plug-and-play project. There are a lot of critical dependencies th
 10. Update and upgrade the Pi using `sudo apt update` and then `sudo apt full-upgrade`.
 
 ### Copy files and install required packages
-11. Copy the files from the "parking" directory in this repo into the home directory Pi. Your "home" directory will usually be /home/pi/. If you choose to put the files elsewhere, you will need to change the home directory reference in settings.json.
+11. Copy the files from the "parking" directory in this repo into the home directory Pi. Your "home" directory will usually be /home/pi/. If you choose to put the files elsewhere, you will need to change the `home directory` value in `settings.json`.
 12. Install required packages using the following commands:
     - `pip3 install pyowm`
     - `pip3 install Pillow==6.2.2`
@@ -52,16 +55,18 @@ This is not a plug-and-play project. There are a lot of critical dependencies th
     4. Open [my Google Sheet](https://docs.google.com/spreadsheets/d/1DgtmaaFHhjRTH1HdO4kMLIx5fvg1-YNFMyjy3Jc96yk/edit?usp=sharing) and "Make a Copy". This will be the Google Sheet that will house your coordinates. 
         - Every time your car is parked and new coordinates are sent, a row will be appended to the "history" tab. 
         - The "current" tab has a formula that will find the most recent coordinate and show that one.
-        - When the update_parking.py script runs, it will pull the value from B2 of the "current" tab, which should be the most recent coordinates of where your car was parked.
-    5. In settings.json, set `sheet_id` to be the sheet id, which can be found in the URL of the sheet.
+        - When `update_parking.py` runs, it will pull the value from B2 of the "current" tab, which should be the most recent coordinates of where your car was parked.
+    5. In `settings.json`, set `sheet_id` to be the sheet id, which can be found in the URL of the sheet.
         - Make sure you're using the sheet_id of *your copy* of the sheet, not mine.
 14. Get the driver for your display.
-    1. *If you bought the display I recommended, you can use the drivers contained in this github. You can skip to step 16.*
-    2. If you bought a different display, download your display's driver from [here](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python/lib/waveshare_epd).
-    3. Copy the file into your parking directory.
-    4. In driver file, change the second line that says `from . import epdconfig` to be `import epdconfig`.
-    5. In display_image.py, change `epd_7_in_5_v3_colour` in the first line to be the name of your driver file (without the .py).
-    6. Note the resolution listed under `# Display resolution` in the driver. We will use this later.
+
+    *If you bought the display I recommended, you can use the drivers contained in this github. You can skip to the next step.*
+
+    1. If you bought a different display, download your display's driver from [here](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python/lib/waveshare_epd).
+    2. Copy the file into your parking directory.
+    3. In the driver file, change the second line that says `from . import epdconfig` to be `import epdconfig`.
+    4. In `display_image.py`, change `epd_7_in_5_v3_colour` in the first line to be the name of your driver file (without the .py).
+    5. Note the resolution listed under `# Display resolution` in the driver. We will use this later.
 15. Get the map image
     1. Create an account with [Mapbox](https://www.mapbox.com/)
     2. Get an API key ([This article will explain how it works](https://docs.mapbox.com/help/getting-started/access-tokens/)).
@@ -73,17 +78,18 @@ This is not a plug-and-play project. There are a lot of critical dependencies th
         - The width and height will be the width and height of your display in pixels. The v3 display is 528x880 pixels.
         - Play around with the longitude, latitude, and zoom to encompass your parking area. My zoom was 16.
         - The preview box shows exactly what your image will look like.
-    4. Copy the Request URL directly into the settings.json file under "mapbox request url".
-        - Make sure that "update mapbox image?" is set to "yes". This will tell the script it needs to download a new image, which is very important the first time. If you ever move or decide to update the image, you can set "update mapbox image?" to "yes" to force it to refresh.
-    5. Don't forget to add your home coordinates to the "house coords" value in settings.json.
+    4. Copy the Request URL directly into `settings.json` under `mapbox request url`.
+        - Make sure that `update mapbox image?` is set to "yes". This will tell the script it needs to download a new image, which is very important the first time. If you ever move or decide to update the image, you can set `update mapbox image?` to "yes" to force it to refresh.
+    5. Don't forget to add your home coordinates to `house coords` in `settings.json`.
 16. Get your Google Maps Snap to Road API key
     1. Create an API key following the instructions [on this page](https://developers.google.com/maps/documentation/roads/get-api-key)
     2. Once you've created the API key, make sure that you select "Library" from the sidebar and search for "Roads API" and enable it.
-    3. Copy your API key to the settings.json file as the "google maps api key".
-17. Add update_parking.py to the crontab file.
+    3. Copy your API key to `settings.json` as `google maps api key`.
+17. Add `update_parking.py` to the crontab file.
     1. Use `crontab -e` to edit the file.
     2. Add `*/10 * * * python3 /home/pi/update_parking.py` to the bottom of the file.
-    3. *This will run the program to check for a new parking location every 10 minutes. The screen will only update if your car has actually moved to a new location on the screen.*
+    
+    *This will run the program to check for a new parking location every 10 minutes. The screen will only update if your car has actually moved to a new location on the screen.*
 
 ### Create your Tasker plugin to populate the location
 *Skip the the next section if you don't have an Android device.*
@@ -106,12 +112,18 @@ This is not a plug-and-play project. There are a lot of critical dependencies th
 
 ## Documentation about the code
 ### Documentation about zoom:
-[This page from OpenStreetMaps](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale) teaches you the formula to use to convert from the latitude and zoom leve to the resolution (meters/pixel). The formula is
-`resolution = [zoom level zero meters/pixel] * cos(latitude) / (2 ^ zoomlevel)`
+[This page from OpenStreetMaps](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale) teaches you the formula to use to convert from the latitude and zoom leve to the resolution (meters/pixel). The formula is:
+
+`resolution = [zoom level @ zero (meters/pixel)] * cos(latitude) / (2 ^ zoom level)`.
+
 [This page from Mapbox](https://docs.mapbox.com/help/glossary/zoom-level/) has the value for what zoom level zero is (78271.484 meters/pixel) on Mapbox.
+
+The zoom level is extracted from the Mapbox Image Request URL with regex. I haven't been able to test this too well if you decide to do something crazy with that image. Feel free to reach out if you have any better ideas.
 
 ### Downloading an image with requests
 [This overview](https://docs.python-requests.org/en/master/user/quickstart/) is what I always use when reminding myself how to use the Requests package. [This answer from Stack Overflow](https://stackoverflow.com/questions/13137817/how-to-download-image-using-requests) is where I found how to download an image with requests.
+
+I also discovered that when downloading the image straight from Mapbox, there is some transparency introduced into the png. Big shoutout to @aceisace for figuring this out and showing me how to remove the transparency in the image.
 
 ### Snap to Roads
 An earlier version of this project attempted to snap to roads manually. This was very involved and required tracing all the roads in your neighborhood. Turns out there's a very simple Google API that does this for you. The documentation for Snap To Roads is [here](https://developers.google.com/maps/documentation/roads/snap).
