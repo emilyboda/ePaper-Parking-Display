@@ -129,5 +129,5 @@ I also discovered that when downloading the image straight from Mapbox, there is
 An earlier version of this project attempted to snap to roads manually. This was very involved and required tracing all the roads in your neighborhood. Turns out there's a very simple Google API that does this for you. The documentation for Snap To Roads is [here](https://developers.google.com/maps/documentation/roads/snap).
 
 ## Big Thanks to
-@aceisace and @worstface for continued help with Waveshare displays.
-@supermamon for answering my questions on Reddit and coming through with the Shortcut for Google Sheets. I never would have figured this part out on my own.
+[@aceisace](https://github.com/aceisace) and [@worstface](https://github.com/worstface) for continued help with Waveshare displays.
+[@supermamon](https://github.com/supermamon) for answering my questions on Reddit and coming through with the Shortcut for Google Sheets. I never would have figured this part out on my own.
