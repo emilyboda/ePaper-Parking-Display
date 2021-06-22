@@ -123,7 +123,11 @@ The zoom level is extracted from the Mapbox Image Request URL with regex. I have
 ### Downloading an image with requests
 [This overview](https://docs.python-requests.org/en/master/user/quickstart/) is what I always use when reminding myself how to use the Requests package. [This answer from Stack Overflow](https://stackoverflow.com/questions/13137817/how-to-download-image-using-requests) is where I found how to download an image with requests.
 
-I also discovered that when downloading the image straight from Mapbox, there is some transparency introduced into the png. Big shoutout to @aceisace for figuring this out and showing me how to remove the transparency in the image.
+I also discovered that when downloading the image straight from Mapbox, there is some transparency introduced into the png. The PIL Image library must be used to remove it.
 
 ### Snap to Roads
 An earlier version of this project attempted to snap to roads manually. This was very involved and required tracing all the roads in your neighborhood. Turns out there's a very simple Google API that does this for you. The documentation for Snap To Roads is [here](https://developers.google.com/maps/documentation/roads/snap).
+
+## Big Thanks to
+@aceisace and @worstface for continued help with Waveshare displays.
+@supermamon for answering my questions on Reddit and coming through with the Shortcut for Google Sheets. I never would have figured this part out on my own.
