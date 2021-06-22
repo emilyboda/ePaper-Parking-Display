@@ -1,0 +1,14 @@
+{
+	"google maps api key": "YOUR API KEY HERE",
+	"house coords": [
+		LATITUDE HERE,
+		LONGITUDE HERE
+	],
+	"testing": "no",
+	"home directory": "/home/pi/",
+	"mapbox request url": "ADD YOUR MAPBOX STATIC IMAGE REQUEST URL HERE",
+	"sheet_id": "YOUR SHEET ID HERE",
+	"last_mode": "none",
+	"last_coords": "(0, 0)",
+	"update mapbox image?": "yes"
+}
