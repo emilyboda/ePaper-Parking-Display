@@ -38,11 +38,12 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
    - Don't forget to change your password using the `passwd` command.
 7. Expand the file system using `sudo raspi-config --expand-rootfs`.
 8. Enable SPI using `sudo sed -i s/#dtparam=spi=on/dtparam=spi=on/ /boot/config.txt`.
-9. Reboot Pi to apply the changes.
+9. Reboot Pi with `sudo reboot -h` to apply the changes.
 10. Update and upgrade the Pi using `sudo apt update` and then `sudo apt full-upgrade`.
 
 ### Copy files and install required packages
 11. Copy the files from the "parking" directory in this repo into the home directory Pi. Your "home" directory will usually be /home/pi/. If you choose to put the files elsewhere, you will need to change the `home directory` value in `settings.json`.
+11. Download all the required files with `git clone https://github.com/emilyboda/ePaper-Parking-Display.git`
 12. Install required packages using the following commands:
     - `pip3 install pyowm`
     - `pip3 install Pillow==6.2.2`
