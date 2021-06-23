@@ -12,7 +12,7 @@ import shutil
 import re
 from inky_image import Inkyimage as Images
 
-with open('settings.json', 'r') as f:	# open the settings file
+with open('/home/pi/ePaper-Parking-Display/parking/settings.json', 'r') as f:	# open the settings file
 	settings = json.load(f)
 
 #######################################
@@ -225,6 +225,6 @@ else:
 #####################################
 
 if need_to_update == 1:
-	with open('settings.json', 'w') as outfile:					# update the last_mode and last_coords if they've changed
+	with open('/home/pi/ePaper-Parking-Display/parking/settings.json', 'w') as outfile:					# update the last_mode and last_coords if they've changed
 		json.dump(settings,outfile)
 	print('updated settings')
