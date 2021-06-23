@@ -5,7 +5,7 @@
 		0.00
 	],
 	"testing": "no",
-	"home directory": "/home/pi/",
+	"home directory": "/home/pi/ePaper-Parking-Display/parking/",
 	"mapbox request url": "ADD YOUR MAPBOX STATIC IMAGE REQUEST URL HERE",
 	"sheet_id": "YOUR SHEET ID HERE",
 	"last_mode": "none",
