@@ -87,12 +87,12 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
     2. Once you've created the API key, make sure that you select "Library" from the sidebar and search for "Roads API" and enable it.
     3. Copy your API key to `settings.json` as `google maps api key`.
 17. Test your parking display!
-    1. Run your file with `python3 /home/pi/parking/update_parking.py` (or change the file path to where your `update_parking.py` file is located).
+    1. Run your file with `python3 /home/pi/ePaper-Parking-Display/parking/update_parking.py` (or change the file path to where your `update_parking.py` file is located).
     2. Take a look for any error messages!
        - If you get `ModuleNotFoundError: No module named 'pytz'`, then run `pip3 install pytz`.
 18. If all goes according to plan in the previous step, then add `update_parking.py` to the crontab file.
     1. Use `crontab -e` to edit the file.
-    2. Add `*/10 * * * python3 /home/pi/parking/update_parking.py` to the bottom of the file. Again, the file path should match where your `update_parking.py` file is located.
+    2. Add `*/10 * * * python3 /home/pi/ePaper-Parking-Display/parking/update_parking.py` to the bottom of the file. Again, the file path should match where your `update_parking.py` file is located.
     
     *This will run the program to check for a new parking location every 10 minutes. The screen will only update if your car has actually moved to a new location on the screen.*
 
