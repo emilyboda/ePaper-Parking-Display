@@ -66,7 +66,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
     1. If you bought a different display, download your display's driver from [here](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python/lib/waveshare_epd).
     2. Copy the file into your parking directory.
     3. In the driver file, change the second line that says `from . import epdconfig` to be `import epdconfig`.
-    4. In `display_image.py`, change `epd_7_in_5_v3_colour` in the first line to be the name of your driver file (without the .py).
+    4. In `update_parking.py`, change `epd_7_in_5_v3_colour` in the first line to be the name of your driver file (without the .py).
     5. Note the resolution listed under `# Display resolution` in the driver. We will use this later.
 15. Get the map image
     1. Create an account with [Mapbox](https://www.mapbox.com/)
@@ -81,25 +81,29 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
         - The preview box shows exactly what your image will look like.
     4. Copy the Request URL directly into `settings.json` under `mapbox request url`.
         - Make sure that `update mapbox image?` is set to "yes". This will tell the script it needs to download a new image, which is very important the first time. If you ever move or decide to update the image, you can set `update mapbox image?` to "yes" to force it to refresh.
-    5. Don't forget to add your home coordinates to `house coords` in `settings.json`.
+    5. Don't forget to add your home coordinates to `house coords` in `settings.json`. This should be notated in the (lat, lon) format.
 16. Get your Google Maps Snap to Road API key
     1. Create an API key following the instructions [on this page](https://developers.google.com/maps/documentation/roads/get-api-key)
     2. Once you've created the API key, make sure that you select "Library" from the sidebar and search for "Roads API" and enable it.
     3. Copy your API key to `settings.json` as `google maps api key`.
-17. Add `update_parking.py` to the crontab file.
+17. Test your parking display!
+    1. Run your file with `python3 /home/pi/parking/update_parking.py` (or change the file path to where your `update_parking.py` file is located).
+    2. Take a look for any error messages!
+       - If you get `ModuleNotFoundError: No module named 'pytz'`, then run `pip3 install pytz`.
+18. If all goes according to plan in the previous step, then add `update_parking.py` to the crontab file.
     1. Use `crontab -e` to edit the file.
-    2. Add `*/10 * * * python3 /home/pi/update_parking.py` to the bottom of the file.
+    2. Add `*/10 * * * python3 /home/pi/parking/update_parking.py` to the bottom of the file. Again, the file path should match where your `update_parking.py` file is located.
     
     *This will run the program to check for a new parking location every 10 minutes. The screen will only update if your car has actually moved to a new location on the screen.*
 
 ### Create your Tasker plugin to populate the location
 *Skip to the next section if you don't have an Android device.*
 
-18. Create a task that runs the following:
+19. Create a task that runs the following:
     - Get Location v2.
     - Use the Spreadsheet Update plug-in to write %gl_coordinates to cell B2 on the tab called "current".
     - I also update a second tab in the sheet to make a log with the date/time and the coordinates so I can go back and troubleshoot if necessary.
-19. Create a profile to trigger the task
+20. Create a profile to trigger the task
     - Profile should be triggered when BT is connected. Set the BT to your car's BT.
     - Connect the get location task you just created.
     - Move the task to "Exit" so it only runs when bluetooth is disconnected.
@@ -107,7 +111,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
 ### Create a iOS Shortcuts task to populate the location
 *Skip to the previous section if you don't have an iOS device*
 
-20. [Follow these instructions](https://gist.github.com/supermamon/5080a599f3719541cb48b3c3ab4e1502) from @supermamon to set up a shortcut to update your location.
+21. [Follow these instructions](https://gist.github.com/supermamon/5080a599f3719541cb48b3c3ab4e1502) from @supermamon to set up a shortcut to update your location.
     1. Edit the shortcut so that it will upload the date, time, timestamp, and current location.
     2. At this time, "disconnect from Bluetooth" is not an available trigger on Shortcuts. You will need to either use an NFC tag in your car to trigger the shortcut, or add the task as an icon on your homescreen and manually trigger it. 
 
