@@ -52,7 +52,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
 13. Set up Google Sheets
     1.  [Follow the quick start instructions](https://developers.google.com/sheets/api/quickstart/python) on a desktop computer.
     2.  Install the required packages on your Pi using `pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib`
-    3. Use [SCP](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) to copy the token from your desktop computer to the home directory on your Pi. Name the credentials `token.pickle`.
+    3. Use [SCP](https://www.raspberrypi.org/documentation/remote-access/ssh/scp.md) to copy the token from your desktop computer to the parking directory on your Pi. Name the credentials `token.pickle`.
     4. Open [my Google Sheet](https://docs.google.com/spreadsheets/d/1DgtmaaFHhjRTH1HdO4kMLIx5fvg1-YNFMyjy3Jc96yk/edit?usp=sharing) and "Make a Copy". This will be the Google Sheet that will house your coordinates. 
         - Every time your car is parked and new coordinates are sent, a row will be appended to the "history" tab. 
         - The "current" tab has a formula that will find the most recent coordinate and show that one.
