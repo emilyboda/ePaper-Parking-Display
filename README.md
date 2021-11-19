@@ -63,7 +63,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
 
     *If you bought the display I recommended, you can use the drivers contained in this github. You can skip to the next step.*
 
-    1. If you bought a different display, download your display's driver from [here](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi%26JetsonNano/python/lib/waveshare_epd).
+    1. If you bought a different display, download your display's driver from [here](https://github.com/waveshare/e-Paper/tree/master/RaspberryPi_JetsonNano/python/lib/waveshare_epd).
     2. Copy the file into your parking directory.
     3. In the driver file, change the second line that says `from . import epdconfig` to be `import epdconfig`.
     4. In `update_parking.py`, change `epd_7_in_5_v3_colour` in the first line to be the name of your driver file (without the .py).
