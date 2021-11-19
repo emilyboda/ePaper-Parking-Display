@@ -1,3 +1,5 @@
+# This is straight-up copied from @aceisace's Inkycal project. Shout out to him for teaching me everything I know about Waveshare displays.
+
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
