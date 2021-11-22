@@ -117,7 +117,7 @@ This project is definitely a work in progress and not "plug-and-play". In this, 
 
 ## Documentation about the code
 ### Documentation about zoom:
-[This page from OpenStreetMaps](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale) teaches you the formula to use to convert from the latitude and zoom leve to the resolution (meters/pixel). The formula is:
+[This page from OpenStreetMaps](https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Resolution_and_Scale) teaches you the formula to use to convert from the latitude and zoom level to the resolution (meters/pixel). The formula is:
 
 `resolution = [zoom level @ zero (meters/pixel)] * cos(latitude) / (2 ^ zoom level)`.
 
@@ -131,7 +131,7 @@ The zoom level is extracted from the Mapbox Image Request URL with regex. I have
 I also discovered that when downloading the image straight from Mapbox, there is some transparency introduced into the png. The PIL Image library must be used to remove it.
 
 ### Snap to Roads
-An earlier version of this project attempted to snap to roads manually. This was very involved and required tracing all the roads in your neighborhood. Turns out there's a very simple Google API that does this for you. The documentation for Snap To Roads is [here](https://developers.google.com/maps/documentation/roads/snap).
+An earlier version of this project attempted to snap to roads manually. This was very involved and required tracing all the roads in your neighborhood manually. Turns out there's a very simple Google API that does this for you. Shoutout to my coworker who pointed this out and made my life much easier (and this tutorial possible). The documentation for Snap To Roads is [here](https://developers.google.com/maps/documentation/roads/snap).
 
 ## Big Thanks to
 [@aceisace](https://github.com/aceisace) and [@worstface](https://github.com/worstface) for continued help with Waveshare displays.
