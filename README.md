@@ -1,7 +1,7 @@
 # ePaper Parking Display
 A display that shows your car's parked location. Automatically updated by a Tasker script.
 
-<img src="https://raw.githubusercontent.com/emilyboda/epaper-parking-display/master/parking_display_for_upload.jpg" width="500">
+<img src="https://github.com/emilyboda/ePaper-Parking-Display/blob/master/parking_display_for_upload.jpg" width="500">
 
 ## Video of Display in Action
 Here is a gif of how the display looks when it is refreshed. I've shortened the video substantially, the actual refresh takes a minutes and forty-four seconds.
